@@ -1,0 +1,188 @@
+<html>
+    <head>
+        <title>
+            ToDo UI
+        </title>
+        <link href="todo.css" rel="stylesheet">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div id="wrapper">
+            <div id="header">
+                <div id="task">
+                    Tasks <span>Lists</span>
+                </div>
+                <div id="add">
+                    <div id="addImg">
+                         <img src="add.png" onclick="addCard()">
+                    </div>
+                    <div id="addtext">
+                        Add List
+                    </div>
+                </div>
+            </div>
+            <div id="noTask">
+                No Items in the ToDo List
+            </div>
+            <div id="cards">
+
+            </div>
+        </div>
+
+        <div id="addlist">
+             Add New List
+            <input type="text" id="cardName">
+            <button id="addbutton" onclick="yesToCard()">Add</button>
+            <button type="submit" onclick="noToCard()">Close</button>
+        </div>
+        <div id="addtask">
+            Add New Task
+           <input type="text" id="taskName">
+           <button id="addtaskbutton" onclick="yesToTask()">Add</button>
+           <button type="submit" onclick="noToTask()">Close</button>
+       </div>
+        <script>
+            var noOfCards=0,present=0,currcard=0;
+            function addCard(){
+              document.getElementById("wrapper").style.position="relative";
+              document.getElementById("wrapper").style.backgroundColor="white";
+              document.getElementById("wrapper").style.opacity="0.15";
+              document.getElementById("noTask").style.display="none";
+              document.getElementById("addlist").style.display="block";
+            }
+            function yesToCard(){
+                document.getElementById("addlist").style.display="none";
+                document.getElementById("wrapper").style.opacity="1";
+                var str=document.getElementById("cardName").value; //str is the name
+                if(str=="" && present==0){
+                    document.getElementById("noTask").style.display="block";
+                }
+                else{
+                    present++;
+                    noOfCards++;
+                    //create card
+                    var maincard= document.createElement("div");
+                    maincard.className="todo";
+                    var maincardhead= document.createElement("div");
+                    maincardhead.className="headtodo";
+                    var headingOfCard= document.createTextNode(str);
+                    var opt=document.createElement("div");
+                    opt.className="optional";
+                    opt.id="opt"+noOfCards;
+                    var hrline= document.createElement("hr");
+                    var deltask= document.createElement("img");
+                    deltask.src="delete.jpg";
+                    deltask.className="delicon";
+                    deltask.id=noOfCards;
+                    var addt = document.createElement("img");
+                    addt.src="addta.png";
+                    addt.className="addition";
+                    addt.id="add"+noOfCards;
+                    addt.onclick= function(){
+                        var x = window.matchMedia("(max-width: 680px)")
+                      
+                      //  else{
+                        document.getElementById("wrapper").style.position="relative";
+                        document.getElementById("wrapper").style.backgroundColor="white";
+                        document.getElementById("wrapper").style.opacity="0.15";//}
+                        document.getElementById("noTask").style.display="none";
+                        document.getElementById("addtask").style.display="block";  
+                        currcard=deltask.id;
+                    };
+                    deltask.onclick=function(){
+                       // var x = window.matchMedia("(max-width: 680px)")
+                       
+                        document.getElementById("card"+deltask.id).remove();
+                        present--;
+                        if(present==0){
+                            document.getElementById("noTask").style.display="block";
+                        }
+                    }
+                    maincard.appendChild(maincardhead);
+                    maincard.appendChild(opt);
+                    opt.appendChild(hrline);
+                    opt.appendChild(deltask);
+                    opt.appendChild(addt);
+                    var textare= document.createElement("div");
+                    textare.id="text"+noOfCards;
+                    opt.appendChild(textare);
+                    maincardhead.appendChild(headingOfCard);
+                    maincard.id="card"+noOfCards;
+                    document.getElementById("cards").appendChild(maincard);
+                    var x = window.matchMedia("(max-width: 680px)")
+                    maincardhead.onclick=function(){
+                        if(x.matches){
+                        //   alert(deltask.id-1);  
+                            let toshow=document.getElementById("opt"+deltask.id);
+                            if(window.getComputedStyle(toshow).display === "none"){
+                                toshow.style.minHeight="200px";
+                                toshow.style.display="block";
+                                var m=document.getElementById("card"+deltask.id);
+                               m.style.minHeight="auto";
+                            }
+                            else{
+                                toshow.style.display="none";
+                                toshow.style.minHeight="0px";
+                           //     m.style.minHeight="20px";
+                            }
+                            
+                        }
+                    }
+                }
+            }
+            function noToCard(){
+                document.getElementById("addlist").style.display="none";
+                document.getElementById("wrapper").style.opacity="1";
+                if(present==0){
+                    document.getElementById("noTask").style.display="block";
+                }
+            }
+            function yesToTask(){
+              //  var x = window.matchMedia("(max-width: 680px)")
+             //   if(x.matches){
+               //     document.getElementById("mobcard").style.opacity="1";
+              //  }
+              //  else{
+                    document.getElementById("wrapper").style.opacity="1";
+              //  }
+                document.getElementById("addtask").style.display="none";
+                let str=document.getElementById("taskName").value; //str is the name
+                if(str!=""){
+                    let children= document.getElementById("text"+currcard);
+                  //  children.style.display="flex";
+                    let cdiv=document.createElement("div");
+                    children.appendChild(cdiv);
+                    let pdiv=document.createElement("p");
+                    pdiv.style.display="inline";
+                    let tasktoadd= document.createTextNode(str);
+                    pdiv.appendChild(tasktoadd);
+                    cdiv.appendChild(pdiv);
+                    tasktoadd.className="checked";
+                    let btn = document.createElement("button");
+                    btn.className="done";
+                   // btn.id="mark"+
+                    let btntext = document.createTextNode("Mark Done");
+                    btn.appendChild(btntext);
+                    cdiv.appendChild(btn);
+                    let nextline = document.createElement("br");
+                    cdiv.appendChild(nextline);
+                    btn.onclick=function(){
+                        //completed
+                        btn.remove();
+                        pdiv.style.color="red";
+                        pdiv.style.textDecoration="line-through";
+                        pdiv.style.marginLeft="20px";
+                    }
+                }
+            }
+            function noToTask(){
+                document.getElementById("addtask").style.display="none";
+                document.getElementById("wrapper").style.opacity="1";
+            }
+
+            //mobview
+          
+        </script>
+    </body>
+</html>

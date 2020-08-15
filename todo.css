@@ -1,0 +1,238 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: "adobe-clean", sans-serif;
+    box-sizing: border-box;
+}
+#wrapper{
+    width: 80%;
+    margin: 7%;
+    margin-left: 10%;
+}
+#header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#add{
+    display: flex;
+    align-items: center;
+}
+#addImg img{
+    cursor:pointer;
+}
+#task{
+    font-weight: bolder;
+    font-size: 55px;
+}
+span{
+    font-weight: normal;
+    color: #606060
+}
+#addtext{
+    color: #606060;
+    font-size: 30px;
+}
+#noTask{
+    margin-top: 2.5%;
+  font-size: 28px;   
+}
+#cards{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 2% 7% 2% 7%;
+    margin-left: 0%;
+    margin-right: 0%;
+    height: 40%;
+    justify-content: space-around;
+}
+.todo{
+    min-width: 24%;
+    margin: 2%;
+    margin-left: 0%;
+    margin-right: 0%;
+    min-height: 100%;
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid red;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+}
+.optional{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    font-size: 20px;
+    padding: 2%;
+    padding-left: 5%;
+}
+.done{
+    background-color: black;
+    color: white;
+    font-size: 15px;
+    border-radius: 40%;
+    padding: 1%;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.headtodo{
+    color: mediumblue;
+    margin-top: 7%;
+    margin-bottom: 4%;
+    margin-left: 3px;
+    margin-right: 0%;
+    font-size: 25px;
+    text-align: center;
+}
+hr{
+    width: 80%;
+}
+
+.delicon{
+    position: absolute;
+    right: 25%;
+    bottom: 0%;
+    width: 50px;
+    height:50px;
+    cursor: pointer;
+}
+.addition{
+    position: absolute;
+    right: 4%;
+    bottom: 4%;
+    width: 30px;
+    height:30px;
+    cursor: pointer;
+}
+
+#addlist{
+    display: flex;
+    display:none;
+    flex-direction: column;
+    padding: 10px;
+    position: absolute;
+    width: 35%;
+    top: 40%;
+    left: 31%;
+    z-index: 3;
+    height: 25%;
+    border-radius: 20px;
+    border: 1px solid red;
+    font-size: 30px;
+    color: tomato;
+    background-color: white;
+    text-align: center;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+}
+#addtask{
+    display: flex;
+    display:none;
+    flex-direction: column;
+    padding: 10px;
+    position: absolute;
+    width: 35%;
+    top: 40%;
+    left: 31%;
+    z-index: 3;
+    height: 25%;
+    border-radius: 20px;
+    border: 1px solid red;
+    font-size: 30px;
+    color: tomato;
+    background-color: white;
+    text-align: center;
+    box-shadow: 5px 5px rgba(0, 0, 0, 0.1);
+}
+#addlist input{
+    width: 70%;
+    height: 40px;
+    align-self: center;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 3px 3px 3px #00000029;
+    border: 1px solid tomato;
+    margin: 16px;
+}
+#addtask input{
+    width: 70%;
+    height: 40px;
+    align-self: center;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 3px 3px 3px #00000029;
+    border: 1px solid tomato;
+    margin: 16px;
+}
+#addlist button{
+    cursor: pointer;
+    font-size: 25px;;
+    background-color: red;
+    color: white;
+    border-radius: 30%;
+    width: 36%;
+    height: 26%;
+    margin: 1%;
+    align-self: center;
+}
+#addtask button{
+    cursor: pointer;
+    font-size: 25px;;
+    background-color: red;
+    color: white;
+    border-radius: 30%;
+    width: 36%;
+    height: 26%;
+    margin: 1%;
+    align-self: center;
+}
+@media screen and (min-width: 320px ) and (max-width: 680px){
+    #task{
+        font-size: 40px;
+    }
+    #noTask{
+        margin-top: 20px;
+        font-size:22px;
+    }
+    .optional{
+        display: none;
+    }
+    #addtext{
+        display: none;
+    }
+    #cards{
+        flex-direction: column;
+        justify-content: space-evenly;
+        justify-content: end;
+        flex-wrap: nowrap;
+    }
+    .todo{
+        min-height: 25%;
+        width: 88%;
+    }
+    .headtodo{
+        text-align: left;
+    }
+    #addlist{
+        display: none;
+        top: 35%;
+        left: 13%;
+        width: 60%;
+        height: 22%;
+    }
+    .checked{
+        text-decoration: line-through;
+        color: red;
+        text-align: center;
+    }
+    #addtask{
+        display: none;
+        top: 35%;
+        left: 13%;
+        width: 60%;
+        height: 22%; 
+    }
+ 
+    
+   
+}
