@@ -116,7 +116,7 @@ hr{
     top: 40%;
     left: 31%;
     z-index: 3;
-    height: 25%;
+    height: 150px;
     border-radius: 20px;
     border: 1px solid red;
     font-size: 30px;
@@ -135,7 +135,7 @@ hr{
     top: 40%;
     left: 31%;
     z-index: 3;
-    height: 25%;
+    height: 150px;
     border-radius: 20px;
     border: 1px solid red;
     font-size: 30px;
@@ -218,7 +218,6 @@ hr{
         top: 35%;
         left: 13%;
         width: 60%;
-        height: 22%;
     }
     .checked{
         text-decoration: line-through;
@@ -229,8 +228,7 @@ hr{
         display: none;
         top: 35%;
         left: 13%;
-        width: 60%;
-        height: 22%; 
+        width: 60%; 
     }
  
     
